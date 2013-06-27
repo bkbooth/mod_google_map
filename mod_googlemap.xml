@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.7"
+	client="site">
+	
+    <name>mod_googlemap</name>
+    <author>Benjamin Booth</author>
+    <creationDate>April 2013</creationDate>
+    <copyright>Copyright (C) 2012. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>bkbooth@gmail.com</authorEmail>
+    <authorUrl>bkbooth.com.au</authorUrl>
+    <version>1.0.0</version>
+    <description>MOD_GOOGLEMAPS_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_googlemap">mod_googlemap.php</filename>
+        <folder>tmpl</folder>
+        <filename>mod_googlemap.xml</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages>
+		<language tag="en-GB">en-GB.mod_googlemap.ini</language>
+		<language tag="en-GB">en-GB.mod_googlemap.sys.ini</language>
+	</languages>
+    <config>
+    	<fields name="params">
+    		<fieldset name="basic">
+    		    <field
+    		    	name="map_width"
+    		    	type="text"
+    		    	default="100%"
+    		    	label="MOD_GOOGLEMAP_WIDTH_LBL"
+    		    	description="MOD_GOOGLEMAP_WIDTH_DESC" />
+    		    <field
+    		    	name="map_height"
+    		    	type="text"
+    		    	default="400px"
+    		    	label="MOD_GOOGLEMAP_HEIGHT_LBL"
+    		    	description="MOD_GOOGLEMAP_HEIGHT_DESC" />
+    		    
+    		    <field
+    		    	type="spacer"
+    		    	name="spacer_location"
+    		    	label="MOD_GOOGLEMAP_SPACER_LOCATION" />
+    		    <field
+    		    	name="map_zoom"
+    		    	type="integer"
+    		    	default="15"
+    		    	label="MOD_GOOGLEMAP_ZOOM_LVL_LBL"
+    		    	description="MOD_GOOGLEMAP_ZOOM_LVL_DESC"
+    		    	first="0"
+    		    	last="21"
+    		    	step="1" />
+    		    <field
+    		    	name="centre_lat"
+    		    	type="text"
+    		    	default="-34.423431"
+    		    	label="MOD_GOOGLEMAP_CENTRE_LAT_LBL"
+    		    	description="MOD_GOOGLEMAP_CENTRE_LAT_DESC" />
+    		    <field
+    		    	name="centre_lng"
+    		    	type="text"
+    		    	default="150.894291"
+    		    	label="MOD_GOOGLEMAP_CENTRE_LONG_LBL"
+    		    	description="MOD_GOOGLEMAP_CENTRE_LONG_DESC" />
+    		    <field
+    		    	name="use_pin"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_PIN_USE_LBL"
+    		    	description="MOD_GOOGLEMAP_PIN_USE_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="pin_lat"
+    		    	type="text"
+    		    	default="-34.423431"
+    		    	label="MOD_GOOGLEMAP_PIN_LAT_LBL"
+    		    	description="MOD_GOOGLEMAP_PIN_LAT_DESC" />
+    		    <field
+    		    	name="pin_lng"
+    		    	type="text"
+    		    	default="150.894291"
+    		    	label="MOD_GOOGLEMAP_PIN_LONG_LBL"
+    		    	description="MOD_GOOGLEMAP_PIN_LONG_DESC" />
+    		    
+    		    <field
+    		    	type="spacer"
+    		    	name="spacer_features"
+    		    	label="MOD_GOOGLEMAP_SPACER_FEATURES" />
+    		    <field
+    		    	name="map_type"
+    		    	type="list"
+    		    	default="ROADMAP"
+    		    	label="MOD_GOOGLEMAP_TYPE_LBL"
+    		    	description="MOD_GOOGLEMAP_TYPE_DESC">
+    		        <option value="HYBRID">MOD_GOOGLEMAP_TYPE_OPT_HYBRID</option>
+    		        <option value="ROADMAP">MOD_GOOGLEMAP_TYPE_OPT_ROADMAP</option>
+    		        <option value="SATELLITE">MOD_GOOGLEMAP_TYPE_OPT_SATELLITE</option>
+    		        <option value="TERRAIN">MOD_GOOGLEMAP_TYPE_OPT_TERRAIN</option>
+    		    </field>
+    		    <field
+    		    	name="draggable"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_DRAG_LBL"
+    		    	description="MOD_GOOGLEMAP_DRAG_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="scrollwheel"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_SCROLL_LBL"
+    		    	description="MOD_GOOGLEMAP_SCROLL_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="pan_control"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_PAN_LBL"
+    		    	description="MOD_GOOGLEMAP_PAN_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="pan_control_position"
+    		    	type="list"
+    		    	default="TOP_LEFT"
+    		    	label="MOD_GOOGLEMAP_PAN_POS_LBL"
+    		    	description="MOD_GOOGLEMAP_PAN_POS_DESC">
+    		        <option value="BOTTOM_CENTER">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="BOTTOM_LEFT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="BOTTOM_RIGHT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		        <option value="LEFT_BOTTOM">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="LEFT_CENTER">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="LEFT_TOP">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="RIGHT_BOTTOM">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="RIGHT_CENTER">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="RIGHT_TOP">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="TOP_CENTER">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="TOP_LEFT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="TOP_RIGHT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		    </field>
+    		    <field
+    		    	name="zoom_control"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_ZOOM_LBL"
+    		    	description="MOD_GOOGLEMAP_ZOOM_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="zoom_control_position"
+    		    	type="list"
+    		    	default="TOP_LEFT"
+    		    	label="MOD_GOOGLEMAP_ZOOM_POS_LBL"
+    		    	description="MOD_GOOGLEMAP_ZOOM_POS_DESC">
+    		        <option value="BOTTOM_CENTER">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="BOTTOM_LEFT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="BOTTOM_RIGHT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		        <option value="LEFT_BOTTOM">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="LEFT_CENTER">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="LEFT_TOP">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="RIGHT_BOTTOM">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="RIGHT_CENTER">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="RIGHT_TOP">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="TOP_CENTER">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="TOP_LEFT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="TOP_RIGHT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		    </field>
+    		    <field
+    		    	name="zoom_control_style"
+    		    	type="list"
+    		    	default="DEFAULT"
+    		    	label="MOD_GOOGLEMAP_ZOOM_STYLE_LBL"
+    		    	description="MOD_GOOGLEMAP_ZOOM_STYLE_DESC">
+    		        <option value="DEFAULT">MOD_GOOGLEMAP_OPT_DEFAULT</option>
+    		        <option value="LARGE">MOD_GOOGLEMAP_ZOOM_STYLE_LARGE</option>
+    		        <option value="SMALL">MOD_GOOGLEMAP_ZOOM_STYLE_SMALL</option>
+    		    </field>
+    		    <field
+    		    	name="streetview_control"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_SVIEW_LBL"
+    		    	description="MOD_GOOGLEMAP_SVIEW_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="streetview_control_position"
+    		    	type="list"
+    		    	default="UNDEFINED"
+    		    	label="MOD_GOOGLEMAP_SVIEW_POS_LBL"
+    		    	description="MOD_GOOGLEMAP_SVIEW_POS_DESC">
+    		        <option value="UNDEFINED">MOD_GOOGLEMAP_OPT_DEFAULT</option>
+    		        <option value="BOTTOM_CENTER">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="BOTTOM_LEFT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="BOTTOM_RIGHT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		        <option value="LEFT_BOTTOM">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="LEFT_CENTER">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="LEFT_TOP">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="RIGHT_BOTTOM">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="RIGHT_CENTER">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="RIGHT_TOP">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="TOP_CENTER">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="TOP_LEFT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="TOP_RIGHT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		    </field>
+    		    <field
+    		    	name="maptype_control"
+    		    	type="radio"
+    		    	default="1"
+    		    	label="MOD_GOOGLEMAP_MAPTYPE_LBL"
+    		    	description="MOD_GOOGLEMAP_MAPTYPE_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="maptype_control_position"
+    		    	type="list"
+    		    	default="TOP_RIGHT"
+    		    	label="MOD_GOOGLEMAP_MAPTYPE_POS_LBL"
+    		    	description="MOD_GOOGLEMAP_MAPTYPE_POS_DESC">
+    		        <option value="BOTTOM_CENTER">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="BOTTOM_LEFT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="BOTTOM_RIGHT">MOD_GOOGLEMAP_OPT_BOTTOM MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		        <option value="LEFT_BOTTOM">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="LEFT_CENTER">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="LEFT_TOP">MOD_GOOGLEMAP_OPT_LEFT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="RIGHT_BOTTOM">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_BOTTOM</option>
+    		        <option value="RIGHT_CENTER">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="RIGHT_TOP">MOD_GOOGLEMAP_OPT_RIGHT MOD_GOOGLEMAP_OPT_TOP</option>
+    		        <option value="TOP_CENTER">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_CENTRE</option>
+    		        <option value="TOP_LEFT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_LEFT</option>
+    		        <option value="TOP_RIGHT">MOD_GOOGLEMAP_OPT_TOP MOD_GOOGLEMAP_OPT_RIGHT</option>
+    		    </field>
+    		    <field
+    		    	name="maptype_control_style"
+    		    	type="list"
+    		    	default="DEFAULT"
+    		    	label="MOD_GOOGLEMAP_MAPTYPE_STYLE_LBL"
+    		    	description="MOD_GOOGLEMAP_MAPTYPE_STYLE_DESC">
+    		        <option value="DEFAULT">MOD_GOOGLEMAP_OPT_DEFAULT</option>
+    		        <option value="DROPDOWN_MENU">MOD_GOOGLEMAP_MAPTYPE_STYLE_MENU</option>
+    		        <option value="HORIZONTAL_BAR">MOD_GOOGLEMAP_MAPTYPE_STYLE_BAR</option>
+    		    </field>
+    		    <field
+    		    	name="use_styles"
+    		    	type="radio"
+    		    	default="0"
+    		    	label="MOD_GOOGLEMAP_STYLES_USE_LBL"
+    		    	description="MOD_GOOGLEMAP_STYLES_USE_DESC">
+    		        <option value="1">MOD_GOOGLEMAP_OPT_YES</option>
+    		        <option value="0">MOD_GOOGLEMAP_OPT_NO</option>
+    		    </field>
+    		    <field
+    		    	name="styles"
+    		    	type="textarea"
+    		    	default=""
+    		    	label="MOD_GOOGLEMAP_STYLES_LBL"
+    		    	description="MOD_GOOGLEMAP_STYLES_DESC"
+    		    	rows="10"
+    		    	cols="10"
+    		    	filter="raw"/>
+    		</fieldset>
+    		<fieldset name="advanced">
+    			<field
+    				name="moduleclass_sfx"
+    				type="text"
+    				default=""
+    				label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+    				description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+    		</fieldset>
+    	</fields>
+    </config>
+</extension>

@@ -1,9 +1,7 @@
 <?php
 /*
  * Google Maps module
- * © 2013 e-motion design
- * dev@e-motion.com.au
- * www.e-motion.com.au
+ * (C) 2013 e-motion design
  */
 
 // no direct access
@@ -40,6 +38,6 @@ $use_styles = $params->get('use_styles', 0);
 $styles = $params->get('styles', "");
 
 
-require(JModuleHelper::getLayoutPath('mod_google_map'));
+require JModuleHelper::getLayoutPath('mod_google_map', $params->get('layout', 'default'));
 
 ?>

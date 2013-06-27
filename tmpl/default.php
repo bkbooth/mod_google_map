@@ -1,16 +1,14 @@
 <?php
 /*
  * Google Maps module - layout
- * © 2013 e-motion design
- * dev@e-motion.com.au
- * www.e-motion.com.au
+ * (C) 2013 e-motion design
  */
 
 // No direct access.
 defined('_JEXEC') or die;
 
-$doc = JFactory::getDocument();
-$doc->addScript('http://maps.google.com/maps/api/js?sensor=false');
+// Load the Google Maps API
+JFactory::getDocument()->addScript('http://maps.google.com/maps/api/js?sensor=false');
 
 ?>
 <div id="map_canvas" class="<?=$moduleclass_sfx?>" style="height: <?=$map_height?>; width: <?=$map_width?>;"></div>
@@ -74,7 +72,7 @@ function initialize() {
 
 initialize();
 
-// handle browser resizing nicely
+// Handle browser resizing nicely
 function calculateCentre() {
 	centre = map.getCenter();
 }
